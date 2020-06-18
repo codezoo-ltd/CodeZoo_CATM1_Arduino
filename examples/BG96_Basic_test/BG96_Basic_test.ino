@@ -52,10 +52,6 @@ void setup() {
 		delay(2000);
 	}
 
-	if (BG96.actPDP() ) {
-		DebugSerial.println("BG96 PDP Activation Error");
-	}
-
 	DebugSerial.println("BG96 Module Ready!!!");
 
 	/*** BG96 Basic Test Code ***/

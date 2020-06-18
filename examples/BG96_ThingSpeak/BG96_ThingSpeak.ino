@@ -2,6 +2,8 @@
 #include <TimeAlarms.h> /* https://github.com/PaulStoffregen/TimeAlarms */
 #include <Arduino.h>
 #include "BG96.h"      /* https://github.com/codezoo-ltd/CAT.M1_Arduino */
+
+// AM2302(DHT22) Temperature & Humidity Sensor
 #include "DHT.h"	     /* https://github.com/markruys/arduino-DHT */
 
 #define DebugSerial		Serial
@@ -14,8 +16,8 @@
  * Be careful !!!
  * Keep the communication cycle with ThingSpeak.com for at least 3 minutes.
  */
-//#define ALARM_CYCLE 3600  /* Seconds, 1hour */
-#define ALARM_CYCLE   180    /*Seconds, 3min */
+#define ALARM_CYCLE 3600  /* Seconds, 1hour */
+//#define ALARM_CYCLE   180    /*Seconds, 3min */
 
 String WApiKey = "****************";	//Thing Speak Write API Key 16Character
 float temp = 0.0;						//Stores temperature value
@@ -24,8 +26,7 @@ float humi = 0.0;						//Stores humidity value
 String fieldTemp = "field1";    //Air temperature
 String fieldHumi = "field2";    //Air humidity
 
-DHT dht;    // AM2302(DHT22) Temperature & Humidity Sensor
-
+DHT dht;    
 int _sendTag = 0;
 
 BG96 BG96(M1Serial, DebugSerial, PWR_PIN, STAT_PIN);
