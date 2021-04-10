@@ -17,6 +17,8 @@
 #if !defined(COUNTDOWN_H)
 #define COUNTDOWN_H
 
+#include "Arduino.h"
+
 class Countdown
 {
 public:
