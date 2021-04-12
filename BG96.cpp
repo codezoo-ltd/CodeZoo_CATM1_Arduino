@@ -1145,6 +1145,20 @@ void BG96::BG96_trace(const __FlashStringHelper *szTrace, ...) {
 #endif
 }
 
+int BG96::actGPS(void) {
+  char resBuffer[8];
+  return sendATcmd("AT+QGPS=1", resBuffer, sizeof(resBuffer), "OK", 3000);
+}
+
+int BG96::deActGPS(void) {
+  char resBuffer[8];
+  return sendATcmd("AT+QGPS=0", resBuffer, sizeof(resBuffer), "OK", 3000);
+}
+
+int BG96::getGPSLoc(char *buffer, int bufferSize) {
+  return sendATcmd("AT+QGPSLOC?", buffer, bufferSize, "+QGPSLOC", 3000);
+}
+
 int BG96::disablePSM() {
   char szCmd[16];
   char resBuffer[16];

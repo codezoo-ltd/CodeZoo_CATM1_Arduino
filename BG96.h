@@ -141,6 +141,21 @@ public:
                  unsigned long timeout);
 
   /*
+   * Activate a GPS
+   */
+  int actGPS(void);
+
+  /*
+   * Deactivate a GPS
+   */
+  int deActGPS(void);
+
+  /*
+   * Get GPS Location
+   */
+  int getGPSLoc(char *buffer, int bufferSize);
+
+  /*
    * Power Saving Mode Disable function. BG96 Default, 0(Disable)
    */
   int disablePSM(void);
