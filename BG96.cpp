@@ -1156,7 +1156,7 @@ int BG96::deActGPS(void) {
 }
 
 int BG96::getGPSLoc(char *buffer, int bufferSize) {
-  return sendATcmd("AT+QGPSLOC?", buffer, bufferSize, "+QGPSLOC", 3000);
+  return sendATcmd("AT+QGPSLOC=2", buffer, bufferSize, "+QGPSLOC", 3000);
 }
 
 int BG96::disablePSM() {
