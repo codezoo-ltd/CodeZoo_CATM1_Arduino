@@ -55,6 +55,7 @@ void setup() {
   }
 
   DebugSerial.println("BG96 Module Ready!!!");
+}
 
 void loop() {
   /*** BG96 GNSS Test Code ***/
