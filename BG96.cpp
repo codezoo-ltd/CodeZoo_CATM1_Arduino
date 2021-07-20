@@ -638,8 +638,6 @@ int BG96::socketSend(char *buffer, int size) {
   _serial.println(sendBuffer);
   SWIR_TRACE(F("sendATcmd (%s) - %d..."), sendBuffer, _timeOut);
 
-  _serial.flush();
-
   /* Wait ">" */
   i = readATresponseLine(aLine, 3, _timeOut);
   SWIR_TRACE(F("readLine %d..."), i);
@@ -653,7 +651,6 @@ int BG96::socketSend(char *buffer, int size) {
   for (i = 0; i < size; i++) {
     _serial.write(buffer[i]);
   }
-  _serial.flush();
 
   /* Wait "SEND OK" */
   i = readATresponseLine(aLine, 3, 5000);
@@ -711,8 +708,6 @@ int BG96::sendServicecmd(char *szCmd, char *szResponse, int nResponseBufSize,
   _serial.setTimeout(ulWaitDelay + 500);
   _serial.println(szCmd);
 
-  _serial.flush();
-
   nRet = readServiceResponseLine(szResponse, nResponseBufSize, recvSize,
                                  ulWaitDelay);
 
@@ -735,8 +730,6 @@ int BG96::sendSckATcmd(char *szCmd, char *szResponse, int nResponseBufSize,
 
   _serial.setTimeout(ulWaitDelay + 500);
   _serial.println(szCmd);
-
-  _serial.flush();
 
   nRet = readSckresponseLine(szResponse, nResponseBufSize, szResponseFilter,
                              ulWaitDelay);
@@ -761,8 +754,6 @@ int BG96::sendATcmd(char *szCmd, char *szResponse, int nResponseBufSize,
   _serial.setTimeout(ulWaitDelay + 500);
   _serial.println(szCmd);
 
-  _serial.flush();
-
   nRet = readATresponseLine(szResponse, nResponseBufSize, szResponseFilter,
                             ulWaitDelay);
 
@@ -783,8 +774,6 @@ int BG96::sendATcmd(char *szCmd, char *aLine[], int nMaxLine,
 
   _serial.setTimeout(ulWaitDelay + 500);
   _serial.println(szCmd);
-
-  _serial.flush();
 
   nRet = readATresponseLine(aLine, nMaxLine, ulWaitDelay);
 
@@ -1119,7 +1108,6 @@ int BG96::readATresponseLine(char *aLine[], int nMaxLine,
 }
 
 void BG96::BG96_serial_clearbuf() {
-  _serial.flush();
 
   while (_serial.available()) {
     _serial.read();
